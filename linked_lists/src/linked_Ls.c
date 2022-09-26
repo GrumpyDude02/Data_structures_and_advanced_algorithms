@@ -2,26 +2,27 @@
 #include <stdlib.h>
 #include "linked_Ls.h"
 
-void insert(node_p *head, int index, int data)
+void insert(node_p head, int index, int data)
 {
 
-    node_p temp = (node_p)malloc(sizeof(node_int));
+    node_p temp;
 
-    if (index <= 1 && *head != NULL)
+    if (index <= 1 && head != NULL)
     {
+        temp = (node_p)malloc(sizeof(node_int));
         temp->data = data;
-        temp->next = *head;
-        *head = temp;
+        temp->next = head;
+        head = temp;
     }
     else
     {
-        temp = *head;
+        temp = head;
         for (int i = 1; i < index - 1; i++)
         {
             temp = temp->next;
         }
         node_p temp2 = (node_p)malloc(sizeof(node_int));
-        node_p temp3 = (node_p)malloc(sizeof(node_int));
+        node_p temp3;
         temp3 = temp->next;
         temp->next = temp2;
         temp2->data = data;

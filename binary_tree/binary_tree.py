@@ -1,6 +1,3 @@
-from turtle import right
-
-
 class node:
     def __init__(self, data):
         self.data = data
@@ -9,7 +6,6 @@ class node:
 
 
 class binary_tree:
-
     def __init__(self, root):
         self.root = root
 
@@ -38,9 +34,9 @@ class binary_tree:
         # return array
 
     def preorder_traversal(self, array):
-        array.append(self.root.data)
         if not self.root:
             return
+        array.append(self.root.data)
         if self.root.left:
             self.root.left.preorder_traversal(array)
         if self.root.right:

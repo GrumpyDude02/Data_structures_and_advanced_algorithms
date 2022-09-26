@@ -128,7 +128,7 @@ int main()
     // delete__(head, 2);
     //  print_list(head);
     //  replace_head(&head, 99);
-    insert(&head, 2, 99);
+    insert(head, 2, 99);
     print_list(head);
     delete__(&head, 1);
     print_list(head);
