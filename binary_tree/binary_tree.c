@@ -25,11 +25,7 @@ void insert_node(int val, node *HEAD)
         }
         else
         {
-            node *new_n = (node *)malloc(sizeof(node));
-            new_n = (HEAD)->left;
-            new_n->left = NULL;
-            new_n->right = NULL;
-            insert_node(val, new_n);
+            insert_node(val, HEAD->left);
         }
     }
     else
@@ -44,11 +40,7 @@ void insert_node(int val, node *HEAD)
         }
         else
         {
-            node *new_node = (node *)malloc(sizeof(node));
-            new_node = (HEAD)->right;
-            new_node->left = NULL;
-            new_node->right = NULL;
-            insert_node(val, new_node);
+            insert_node(val, HEAD->right);
         }
     }
 }

@@ -7,15 +7,12 @@ print(array)
 
 def bubble_sort(array):
     for i in range(len(array)-1):
-        #swapped = False
+        swapped = False
         for j in range(len(array)-i-1):
             if array[j] > array[j+1]:
-                #swapped = True
                 temp = array[j]
                 array[j] = array[j+1]
                 array[j+1] = temp
-        # if swapped:
-            # break
 
 
 print(len(array))
