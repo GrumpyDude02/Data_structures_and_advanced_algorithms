@@ -28,20 +28,37 @@ bool compare_words(char *a, char *b)
 {
     int i;
     int n = min(strlen(a), strlen(b));
+    char *temp1 = (char *)malloc(sizeof(char) * strlen(a));
+    char *temp2 = (char *)malloc(sizeof(char) * strlen(b));
+    strcpy(temp1, a);
+    strcpy(temp2, b);
     for (i = 0; i < n; i++)
     {
-        if (a[i] >= 65 && a[i] <= 90)
-            a[i] = a[i] + 32;
-        if (b[i] >= 65 && b[i] <= 90)
-            b[i] = b[i] + 32;
-        if (a[i] > b[i])
+        if (temp1[i] >= 65 && temp1[i] <= 90)
+            temp1[i] = temp1[i] + 32;
+        if (temp2[i] >= 65 && temp2[i] <= 90)
+            temp2[i] = temp2[i] + 32;
+        if (temp1[i] > temp2[i])
+        {
+            free(temp1);
+            free(temp2);
             return true;
-        if (a[i] < b[i])
+        }
+        if (temp1[i] < temp2[i])
+        {
+            free(temp1);
+            free(temp2);
             return false;
+        }
     }
     if (strlen(a) <= strlen(b))
+    {
+        free(temp1);
+        free(temp2);
         return false;
-
+    }
+    free(temp1);
+    free(temp2);
     return true;
 }
 
@@ -104,18 +121,12 @@ int main()
     node *root = (node *)malloc(sizeof(node));
     root->left = NULL;
     root->right = NULL;
-    root->wordo = "ap\0";
-    char c[] = "cucumbah";
-    char g[] = "grape";
-    char a[] = "apple";
-    char d[] = "ban";
-    char e[] = "banana";
-    char f[] = "bani";
-    char r[] = "banina";
+    root->wordo = "ap";
     insert__("b", root);
+    insert__("Apple", root);
     insert__("ba", root);
-    insert__("bb", root);
     insert__("bc", root);
+    insert__("Hello", root);
     insert__("bd", root);
     insert__("ad", root);
 
