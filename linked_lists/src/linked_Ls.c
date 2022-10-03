@@ -66,3 +66,18 @@ void print_list(node_p head)
     }
     printf("\n");
 }
+
+void reverse(node_p *HEAD)
+{
+    node_p prev = NULL;
+    node_p temp = (*HEAD);
+    node_p temp1;
+    while (temp != NULL)
+    {
+        temp1 = temp->next;
+        temp->next = prev;
+        prev = temp;
+        temp = temp1;
+    }
+    *HEAD = prev;
+}

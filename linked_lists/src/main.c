@@ -133,6 +133,8 @@ int main()
     delete__(&head, 1);
     print_list(head);
     int x;
+    reverse(&head);
+    print_list(head);
     scanf("%d", &x);
     return 0;
 }
