@@ -36,11 +36,12 @@ bool compare_words(char *a, char *b)
             b[i] = b[i] + 32;
         if (a[i] > b[i])
             return true;
-        else if (a[i] < b[i])
+        if (a[i] < b[i])
             return false;
     }
-    if (i == n)
+    if (strlen(a) <= strlen(b))
         return false;
+
     return true;
 }
 
@@ -103,29 +104,21 @@ int main()
     node *root = (node *)malloc(sizeof(node));
     root->left = NULL;
     root->right = NULL;
-    root->wordo = "ap";
+    root->wordo = "ap\0";
     char c[] = "cucumbah";
     char g[] = "grape";
-    char a[] = "Apple";
+    char a[] = "apple";
     char d[] = "ban";
     char e[] = "banana";
     char f[] = "bani";
+    char r[] = "banina";
+    insert__("b", root);
+    insert__("ba", root);
+    insert__("bb", root);
+    insert__("bc", root);
+    insert__("bd", root);
+    insert__("ad", root);
 
-    insert__(e, root);
-    insert__(c, root);
-    insert__(g, root);
-    insert__(e, root);
-    insert__(a, root);
-    insert__(d, root);
-    insert__(f, root);
-    if (compare_words(d, e))
-    {
-        printf("hh");
-    }
-    else
-    {
-        printf("g");
-    }
     in_order_traversal(root);
     return 0;
 }
