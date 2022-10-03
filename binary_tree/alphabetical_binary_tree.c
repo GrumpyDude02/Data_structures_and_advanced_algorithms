@@ -26,7 +26,7 @@ char *convert_lower_case(char *a)
 
 bool compare_words(char *a, char *b)
 {
-    int i, k = 0;
+    int i;
     int n = min(strlen(a), strlen(b));
     for (i = 0; i < n; i++)
     {
@@ -38,9 +38,8 @@ bool compare_words(char *a, char *b)
             return true;
         else if (a[i] < b[i])
             return false;
-        k++;
     }
-    if (k == strlen(a) && k == strlen(b))
+    if (i == n)
         return false;
     return true;
 }
@@ -110,11 +109,23 @@ int main()
     char a[] = "Apple";
     char d[] = "ban";
     char e[] = "banana";
+    char f[] = "bani";
+
+    insert__(e, root);
     insert__(c, root);
     insert__(g, root);
+    insert__(e, root);
     insert__(a, root);
     insert__(d, root);
-    insert__(e, root);
+    insert__(f, root);
+    if (compare_words(d, e))
+    {
+        printf("hh");
+    }
+    else
+    {
+        printf("g");
+    }
     in_order_traversal(root);
     return 0;
 }
