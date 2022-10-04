@@ -125,16 +125,13 @@ int main()
     node_p new_node = insert_node_end(head, 3);
     node_p new_node1 = insert_node_end(head, 4);
     print_list(head);
-    // delete__(head, 2);
-    //  print_list(head);
-    //  replace_head(&head, 99);
     insert(head, 2, 99);
     print_list(head);
     delete__(&head, 1);
     print_list(head);
+    printf("\n");
+    print_in_reverse(head);
     int x;
-    reverse(&head);
-    print_list(head);
     scanf("%d", &x);
     return 0;
 }

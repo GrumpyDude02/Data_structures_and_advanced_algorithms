@@ -13,5 +13,6 @@ void insert(node_p head, int index, int data);
 void delete__(node_p *head, int index);
 void print_list(node_p head);
 void reverse(node_p *HEAD);
+void print_in_reverse(node_p HEAD);
 
 #endif

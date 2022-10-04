@@ -118,6 +118,14 @@ void in_order_traversal(node *root)
 
 int main()
 {
+#ifdef __STDC_VERSION__
+    printf("__STDC_VERSION__ = %ld \n", __STDC_VERSION__);
+#endif
+
+#ifdef __STRICT_AINSI__
+    puts("__STRICT_AINSI__");
+#endif
+
     node *root = (node *)malloc(sizeof(node));
     root->left = NULL;
     root->right = NULL;

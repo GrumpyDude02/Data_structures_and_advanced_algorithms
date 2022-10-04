@@ -36,6 +36,7 @@ void delete__(node_p *head, int index)
     if (index <= 1 && *head != NULL)
     {
         *head = temp->next;
+        free(temp);
         return;
     }
     else
@@ -64,7 +65,7 @@ void print_list(node_p head)
         printf("%d->", temp->data);
         temp = temp->next;
     }
-    printf("\n");
+    printf("NULL\n");
 }
 
 void reverse(node_p *HEAD)
@@ -80,4 +81,19 @@ void reverse(node_p *HEAD)
         temp = temp1;
     }
     *HEAD = prev;
+}
+
+void print_in_reverse(node_p HEAD)
+{
+    node_p temp = HEAD;
+    if (temp != NULL)
+    {
+        print_in_reverse(temp->next);
+        printf("->%d", temp->data);
+    }
+    else
+    {
+        printf("NULL");
+        return;
+    }
 }
