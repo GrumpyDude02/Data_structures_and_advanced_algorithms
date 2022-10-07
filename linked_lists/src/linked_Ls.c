@@ -89,7 +89,7 @@ void print_in_reverse(node_p HEAD)
     if (temp != NULL)
     {
         print_in_reverse(temp->next);
-        printf("->%d", temp->data);
+        printf("<-%d", temp->data);
     }
     else
     {

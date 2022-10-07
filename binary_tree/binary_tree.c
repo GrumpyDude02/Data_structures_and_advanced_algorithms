@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+int max(int a, int b)
+{
+    int maximum = a >= b ? a : b;
+    return maximum;
+}
+
 typedef struct node
 {
     int data;
@@ -102,27 +108,63 @@ void post_order_traversal(node *HEAD)
     return;
 }
 
+int tree_height(node *root)
+{
+    if (root != NULL)
+    {
+        int left_height = tree_height(root->left);
+        int right_height = tree_height(root->right);
+        return (max(left_height, right_height) + 1);
+    }
+    return 0;
+}
+
+void free_tree(node *root)
+{
+    if (root != NULL)
+    {
+        free_tree(root->left);
+        free_tree(root->right);
+    }
+    free(root);
+    return;
+}
+
+int is_balanced(node *root)
+{
+    if (root == NULL)
+    {
+        return 1;
+    }
+    int left_height = tree_height(root->left);
+    int right_height = tree_height(root->right);
+    if (abs(right_height - left_height) <= 1 && is_balanced(root->left) && is_balanced(root->right))
+    {
+        return 1;
+    }
+    return 0;
+}
+
 int main()
 {
     head = (node *)malloc(sizeof(node));
-    head->data = 1;
+    head->data = 3;
     head->left = NULL;
     head->right = NULL;
 
     insert_node(2, head);
+    insert_node(1, head);
     insert_node(0, head);
-    insert_node(-1, head);
-
-    printf("%d\n", head->data);
-    node *temp = (node *)malloc(sizeof(node));
-    temp = head->right;
-    printf("%d\n", temp->data);
-    search(head, 5);
+    insert_node(4, head);
     in_order_traversal(head);
     printf("\n");
     pre_order_traversal(head);
     printf("\n");
     post_order_traversal(head);
-
-    return 0;
+    printf("\n%d\n", tree_height(head));
+    if (is_balanced(head))
+        printf("balanced");
+    else
+        printf("not balanced");
+    free_tree(head);
 }
