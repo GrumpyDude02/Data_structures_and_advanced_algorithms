@@ -3,15 +3,24 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+typedef enum
+{
+    INT,
+    FLOAT,
+    CHAR
+} data_type;
+
 typedef struct generic_node
 {
+    data_type type;
     void *data;
     struct generic_node *next;
+
 } generic_node;
 
-generic_node *g_init(const void *val, size_t data_size, int eff_size);
-void g_push(generic_node *head, const void *data, size_t, int eff_size);
+generic_node *g_init(const void *data, size_t data_size, int eff_size, data_type type);
+void g_push(generic_node *head, const void *data, size_t data_size, int eff_size, data_type);
 void g_destroy(generic_node *head);
-void print_glist(generic_node *head, void (*print_type)(void *));
+void print_glist(generic_node *head);
 
 #endif
