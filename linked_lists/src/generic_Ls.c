@@ -9,6 +9,7 @@ generic_node *g_init(const void *val, size_t size, int eff_size, data_type type)
     head->data = malloc(size * eff_size);
     head->next = NULL;
     head->type = type;
+    head->size = eff_size;
     memcpy(head->data, val, size * eff_size);
     return head;
 }
@@ -29,6 +30,7 @@ void g_push(generic_node *head, const void *data, size_t data_size, int eff_size
     new_node->next = NULL;
     new_node->data = malloc(data_size * eff_size);
     new_node->type = type;
+    new_node->size = eff_size;
     memcpy(new_node->data, data, data_size * eff_size);
 }
 
@@ -51,11 +53,13 @@ void print_glist(generic_node *head)
         switch (head->type)
         {
         case (INT):
-            printf("%d", *(int *)head->data);
+            for (int i = 0; i < head->size; i++)
+                printf("%d", *((int *)head->data + i));
             break;
 
         case (FLOAT):
-            printf("%f", *(float *)head->data);
+            for (int i = 0; i < head->size; i++)
+                printf("%f", *((float *)head->data + i));
             break;
         case (CHAR):
             printf("%s", (char *)head->data);

@@ -14,6 +14,7 @@ typedef struct generic_node
 {
     data_type type;
     void *data;
+    unsigned size;
     struct generic_node *next;
 
 } generic_node;

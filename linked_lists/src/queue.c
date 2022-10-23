@@ -12,7 +12,7 @@ int is_empty(queue *list)
     return 0;
 }
 
-queue *init_queue(data_type type)
+queue *init_queue(data_type1 type)
 {
     queue *q = (queue *)malloc(sizeof(queue));
     q->type = type;
@@ -25,7 +25,7 @@ queue *init_queue(data_type type)
 void enqueue(queue **q, const void *data, int eff_size)
 {
 
-    generic_node *new_element = (generic_node *)malloc(sizeof(generic_node));
+    generic_n *new_element = (generic_n *)malloc(sizeof(generic_n));
     switch ((*q)->type)
     {
     case (INT):
@@ -55,7 +55,7 @@ void enqueue(queue **q, const void *data, int eff_size)
 
 void q_insert_start(queue **q, const void *data, int eff_size)
 {
-    generic_node *new_element = (generic_node *)malloc(sizeof(generic_node));
+    generic_n *new_element = (generic_n *)malloc(sizeof(generic_n));
     switch ((*q)->type)
     {
     case (INT):
@@ -83,7 +83,7 @@ void q_insert_start(queue **q, const void *data, int eff_size)
 
 void dequeue(queue **q)
 {
-    generic_node *temp = (*q)->head;
+    generic_n *temp = (*q)->head;
     (*q)->head = (*q)->head->next;
     free(temp->data);
     free(temp);
