@@ -13,7 +13,9 @@ typedef struct node
     int data;
     struct node *left;
     struct node *right;
-} node;
+} Node;
+
+typedef Node node;
 
 node *head;
 
@@ -73,6 +75,20 @@ bool search(node *HEAD, int val)
     }
     printf("%d not found\n", val);
     return false;
+}
+
+Node *trouverNoeud(Node *root, void *objet, int (*comparer)(void *, void *))
+{
+    if (!root)
+        return NULL;
+    if (comparer((void *)root, objet) == 0)
+        return root;
+    Node *temp;
+    if (temp = trouverNoeud((void *)root->left, objet, comparer))
+        return temp;
+    if (temp = trouverNoeud((void *)root->right, objet, comparer))
+        return temp;
+    return NULL;
 }
 
 void in_order_traversal(node *HEAD)
