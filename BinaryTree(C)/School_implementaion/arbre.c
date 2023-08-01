@@ -209,7 +209,7 @@ void inserer_arbre_gene(Noeud *racine, void *objet, int (*comparer)(void *, void
     return;
 }
 
-bool esFeuille(Noeud *Racine)
+bool estFeuille(Noeud *Racine)
 {
     (!Racine->gauche && !Racine->droite) ? true : false;
 }
@@ -218,7 +218,7 @@ int nbFeuille(Noeud *racine)
 {
     if (!racine)
         return 0;
-    else if (esFeuille(racine))
+    else if (estFeuille(racine))
         return 1;
     else
         return (nbFeuille(racine->gauche) + nbFeuille(racine->droite));

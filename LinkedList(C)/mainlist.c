@@ -1,5 +1,4 @@
 #include "liste.h"
-#include "Personne.h"
 
 int menu_entier()
 {
@@ -22,36 +21,36 @@ int menu_entier()
 }
 
 // affichage des fonction
-char *afficher_entier(void *objet)
+char* afficher_entier(void* objet)
 {
-    char *buffer = (char *)malloc(sizeof(int) * 8 + 1);
+    char* buffer = (char*)malloc(sizeof(int) * 8 + 1);
     // cette fonction de la bibliothèque standard de C convertit
     // un entier en chaine de caractères, elle prend comme
     // parametre l'entier, un tableau de caractères ou
     // la fonction stock les données issus de la conversion
     // le dernier parametre est la base
-    itoa(*(int *)objet, buffer, 10);
+    itoa(*(int*)objet, buffer, 10);
     return buffer;
 }
 
 // fonction qui compare deux entiers
 // si il sont égaux retourne 0
-int comparer_entier(void *objet1, void *objet2)
+int comparer_entier(void* objet1, void* objet2)
 {
-    if (*(int *)objet1 == *(int *)objet2)
+    if (*(int*)objet1 == *(int*)objet2)
         return 0;
-    else if (*(int *)objet1 > *(int *)objet2)
+    else if (*(int*)objet1 > *(int*)objet2)
         return 1;
     else
         return -1;
 }
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     // declaration des varibles
-    int k, temp, *add;
-    Objet *objet;
-    Liste *l = NULL;
+    int k, temp, * add;
+    Objet* objet;
+    Liste* l = NULL;
     do
     {
         // on doit verfier si la liste existe sinon
@@ -81,19 +80,19 @@ int main(int argc, char **argv)
             // allocation de la mémoire pour l'entier qu'on souhaite
             // inserer,puis on stock son adresse dans le premier élément
             printf("entrer un entier:");
-            add = (int *)malloc(sizeof(int));
+            add = (int*)malloc(sizeof(int));
             scanf("%d", add);
             insererEnTeteDeListe(l, add);
-            printf("\nle premier element de la liste est: %d\n", *(int *)l->premier->reference);
+            printf("\nle premier element de la liste est: %d\n", *(int*)l->premier->reference);
             break;
         case 3:
             // allocation de la mémoire pour l'entier qu'on souhaite
             // inserer,puis on stock son adresse dans le dernier élément
             printf("entrer un entier:");
-            add = (int *)malloc(sizeof(int));
+            add = (int*)malloc(sizeof(int));
             scanf("%d", add);
             insererEnFinDeListe(l, add);
-            printf("\nle dernier element de la liste est: %d\n", *(int *)l->dernier->reference);
+            printf("\nle dernier element de la liste est: %d\n", *(int*)l->dernier->reference);
             break;
         case 4:
             // extraction du premier objet de la liste
@@ -136,7 +135,7 @@ int main(int argc, char **argv)
             //  l'adresse de l'objet s'il existe ,puis on passe
             // cette adresse comme parametre pour la fonction
             // extraireUnObjet() pour extraire l'objet
-            if (extraireUnObjet(l, chercherUnObjet(l, (void *)add)))
+            if (extraireUnObjet(l, chercherUnObjet(l, (void*)add)))
                 printf("Objet extrait");
             // si les deux fonction retourne NULL, cela signifie
             // l'objet recherché n'existe pas dans la liste
@@ -154,7 +153,7 @@ int main(int argc, char **argv)
             add = &temp;
             // la fonction chercherUnObjet() retourne NULL si
             // l'objet n'est pas dans la liste sinon elle retourne son adresse
-            objet = chercherUnObjet(l, (void *)add);
+            objet = chercherUnObjet(l, (void*)add);
             // si l'objet est trouve on informe l'utilisateur que l'entier
             // existe dans la liste, sinon un message informant que l'objet n'est
             // pas dans la liste sera afficher
